@@ -1,18 +1,20 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
-function OPenAccount() {
+function OpenAccount() {
     return ( 
-        <div className="container p-5">
-            <div className="row justify-content-center text-center">
-                <div className="col-md-8">
-                    <h1 className="mt-5 text-muted">Open a Zerodha account</h1>
-                    <br></br>
-                    <p className='text-muted'>Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and F&O trades.</p>
-                    <button className="btn btn-primary fs-5 mb-5 d-block mx-auto w-25">Sign up for free</button>
-                </div>
+        <div className="container vh-100 d-flex justify-content-center align-items-center">
+            <div className="text-center">
+                <h1 className="text-muted fw-bold">Open a Zerodha Account</h1>
+                <p className="lead text-muted">
+                    Modern platforms and apps, ₹0 investments, and flat ₹20 intraday and F&O trades.
+                </p>
+                <Link to="/signup" className="btn btn-primary fw-bold py-2 px-4 fs-5 mt-3">
+                    Sign up for free
+                </Link>
             </div>
         </div>
-     );
+    );
 }
 
-export default OPenAccount;
+export default OpenAccount;

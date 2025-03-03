@@ -2,11 +2,15 @@ import React from 'react';
 
 function Awards() {
     return (
-        <div className="mt-5">
+        <section className="mt-5 container">
             <div className="row align-items-center">
                 {/* Image Column */}
-                <div className="col-md-6 col-12 p-5 text-center">
-                    <img src="/media/images/largestBroker.svg" alt="largestBroker" className="img-fluid" />
+                <div className="col-md-6 col-12 p-5 text-md-start text-center">
+                    <img 
+                        src="/media/images/largestBroker.svg" 
+                        alt="Illustration of the largest stock broker in India" 
+                        className="img-fluid" 
+                    />
                 </div>
 
                 {/* Text Content Column */}
@@ -20,7 +24,7 @@ function Awards() {
                     <div className="row">
                         {/* Left List */}
                         <div className="col-6">
-                            <ul className="ps-3">
+                            <ul className="list-unstyled ps-3">
                                 <li>Futures and Options</li>
                                 <li>Commodity derivatives</li>
                                 <li>Currency derivatives</li>
@@ -28,7 +32,7 @@ function Awards() {
                         </div>
                         {/* Right List */}
                         <div className="col-6">
-                            <ul className="ps-3">
+                            <ul className="list-unstyled ps-3">
                                 <li>Stocks & IPOs</li>
                                 <li>Direct mutual funds</li>
                                 <li>Bonds and Govt. securities</li>
@@ -38,11 +42,16 @@ function Awards() {
 
                     {/* Press Logos */}
                     <div className="text-center mt-4">
-                        <img src="/media/images/pressLogos.png" alt="Zerodha-logo" className="img-fluid" style={{ width: '80%' }} />
+                        <img 
+                            src="/media/images/pressLogos.png" 
+                            alt="Press logos featuring Zerodha" 
+                            className="img-fluid" 
+                            style={{ maxWidth: '80%' }} 
+                        />
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
     );
 }
 

@@ -1,61 +1,40 @@
 import React from "react";
 
-function Universe() {
-    return (
-        <div style={{ textAlign: "center", padding: "50px 20px" }}>
-            <h1 style={{ fontWeight: "bold" }}>The Zerodha Universe</h1>
-            <p style={{ fontSize: "18px", color: "#666", marginBottom: "40px" }}>
-                Extend your trading and investment experience even further with our partner platforms
-            </p>
+const Universe = () => {
+  const platforms = [
+    { img: "/media/images/zerodhaFundHouse.png", alt: "Zerodha Fund House", description: "Asset Management" },
+    { img: "/media/images/sensibullLogo.svg", alt: "Sensibull", description: "Options trading platform" },
+    { img: "/media/images/goldenpiLogo.png", alt: "GoldenPi", description: "Bonds trading platform" },
+    { img: "/media/images/streakLogo.png", alt: "Streak", description: "Algo and strategy platform" },
+    { img: "/media/images/smallcaseLogo.png", alt: "Smallcase", description: "Thematic investing platform" },
+    { img: "/media/images/dittoLogo.png", alt: "Ditto", description: "Personalized insurance advice" },
+  ];
 
-            {/* Grid Layout */}
-            <div className="container">
-                <div className="row justify-content-center">
-                    {/* Each Item */}
-                    <div className="col-md-4 col-sm-6 p-4">
-                        <img src="/media/images/zerodhaFundHouse.png" alt="Zerodha Fund House" style={{ width: "50%", marginBottom: "10px" }} />
-              
-                        <p style={{ fontSize: "14px", color: "#666" }}>Asset Management</p>
-                    </div>
+  return (
+    <div className="text-center py-5">
+      <h1 className="fw-bold">The Zerodha Universe</h1>
+      <p className="fs-5 text-muted mb-4">
+        Extend your trading and investment experience even further with our partner platforms
+      </p>
 
-                    <div className="col-md-4 col-sm-6 p-4">
-                        <img src="/media/images/sensibullLogo.svg" alt="Sensibull" style={{ width: "50%", marginBottom: "10px" }} />
-            
-                        <p style={{ fontSize: "14px", color: "#666" }}>Options trading platform</p>
-                    </div>
-
-                    <div className="col-md-4 col-sm-6 p-4">
-                        <img src="/media/images/goldenpiLogo.png" alt="Tijori" style={{ width: "50%", marginBottom: "10px" }} /> 
-                       
-                        <p style={{ fontSize: "14px", color: "#666" }}>Bonds Trading platform </p>
-                    </div>
-
-                    <div className="col-md-4 col-sm-6 p-4">
-                        <img src="/media/images/streakLogo.png" alt="Streak" style={{ width: "50%", marginBottom: "10px" }} />
-                       
-                        <p style={{ fontSize: "14px", color: "#666" }}>Algo and Strategy platform.</p>
-                    </div>
-
-                    <div className="col-md-4 col-sm-6 p-4">
-                        <img src="/media/images/smallcaseLogo.png" alt="Smallcase" style={{ width: "50%", marginBottom: "10px" }} />
-                        
-                        <p style={{ fontSize: "14px", color: "#666" }}>Thematic investing platform</p>
-                    </div>
-
-                    <div className="col-md-4 col-sm-6 p-4">
-                        <img src="/media/images/dittoLogo.png" alt="Ditto" style={{ width: "35%", marginBottom: "10px" }} />
-                        
-                        <p style={{ fontSize: "14px", color: "#666" }}>Personalized advice on life and health insurance.</p>
-                    </div>
-                </div>
+      {/* Grid Layout */}
+      <div className="container">
+        <div className="row justify-content-center">
+          {platforms.map(({ img, alt, description }, index) => (
+            <div key={index} className="col-md-4 col-sm-6 p-3 d-flex flex-column align-items-center">
+              <img src={img} alt={alt} className="img-fluid mb-2" style={{ maxWidth: "50%" }} />
+              <p className="text-muted fs-6">{description}</p>
             </div>
-
-            {/* Button */}
-            <button className="btn btn-primary mt-4" style={{ fontSize: "18px", padding: "12px 24px", borderRadius: "5px" }}>
-                Sign up for free
-            </button>
+          ))}
         </div>
-    );
-}
+      </div>
 
-export default Universe;
+      {/* CTA Button */}
+      <button className="btn btn-primary mt-4 fs-5 px-4 py-2 rounded">
+        Sign up for free
+      </button>
+    </div>
+  );
+};
+
+export default Universe;
