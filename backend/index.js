@@ -38,10 +38,12 @@ const app = express();
 const allowedOrigins = process.env.ALLOWED_ORIGINS?.split(',') || [];
 
 app.use(cors({
-  origin: function(origin, callback) {
+  origin: function (origin, callback) {
+    console.log("Origin:", origin);
     if (!origin || allowedOrigins.includes(origin)) {
       callback(null, true);
     } else {
+      console.error("❌ CORS blocked:", origin);
       callback(new Error('Not allowed by CORS'));
     }
   },
@@ -128,7 +130,7 @@ app.get("/users/me", async (req, res) => {
 
     const decoded = jwt.verify(token, JWT_SECRET);
     const user = await User.findById(decoded.userId).select('-password');
-    
+
     if (!user) return res.status(404).json({ error: "User not found" });
 
     res.status(200).json({
@@ -439,7 +441,7 @@ app.get("/positions", authenticate, async (req, res) => {
 // POST /positions - create a new position
 app.post("/positions", authenticate, async (req, res) => {
   const { product, name, qty, avg, price, net, day, isLoss } = req.body;
-  
+
   if (!product || !name || !qty || !avg || !price) {
     return res.status(400).json({ error: "Missing required fields" });
   }
@@ -470,7 +472,7 @@ app.get("/funds", authenticate, async (req, res) => {
     let funds = await FundsModel.findOne({ user: req.userId });
     if (!funds) {
       // If not found, create default funds for the user
-      funds = await FundsModel.create({ 
+      funds = await FundsModel.create({
         user: req.userId,
         availableMargin: 3740,
         usedMargin: 0,
