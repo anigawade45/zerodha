@@ -60,12 +60,13 @@ app.use(
     resave: false,
     saveUninitialized: false,
     cookie: {
-      secure: process.env.NODE_ENV,
+      secure: process.env.NODE_ENV === "production",
       httpOnly: true,
-      sameSite: 'lax'
+      sameSite: "None"
     }
   })
 );
+
 
 app.use(bodyParser.json());
 
@@ -108,9 +109,9 @@ app.post("/users/login", async (req, res) => {
     // Set cookie with secure options
     res.cookie('token', token, {
       httpOnly: true,
-      secure: process.env.NODE_ENV, // Use secure cookies in production
-      sameSite: 'strict',
-      maxAge: 7 * 24 * 60 * 60 * 1000 // 7 days in milliseconds
+      secure: process.env.NODE_ENV === "production",
+      sameSite: 'None',
+      maxAge: 7 * 24 * 60 * 60 * 1000
     });
 
     res.status(200).json({
@@ -152,8 +153,8 @@ app.get("/users/me", async (req, res) => {
 app.post("/users/logout", (req, res) => {
   res.clearCookie('token', {
     httpOnly: true,
-    secure: process.env.NODE_ENV,
-    sameSite: 'strict'
+    secure: process.env.NODE_ENV === "production",
+    sameSite: "None"
   });
   res.status(200).json({ message: "Logged out successfully" });
 });
