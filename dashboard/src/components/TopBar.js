@@ -1,8 +1,11 @@
-import React from "react";
-
+import React, { useContext } from "react";
+import { UserContext } from "./UserContext";
 import Menu from "./Menu";
+import "./TopBar.css";
 
 const TopBar = () => {
+  const { user, logout } = useContext(UserContext);
+
   return (
     <div className="topbar-container">
       <div className="indices-container">
@@ -18,7 +21,19 @@ const TopBar = () => {
         </div>
       </div>
 
-      <Menu />
+      
+        <Menu />
+        <div className="topbar-right">
+        {user && (
+            <button 
+              className="logout-btn"
+              onClick={logout}
+              title="Logout"
+            >
+              Logout
+            </button>
+        )}
+      </div>
     </div>
   );
 };
